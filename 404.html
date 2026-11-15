@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找到 · Sayoko 的手记</title>
+    <meta name="description" content="这个页面不存在。">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f4ed">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111214">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <script>
+        (() => {
+            let saved = null
+            try { saved = localStorage.getItem('theme') } catch {}
+            const dark = saved ? saved === 'dark'
+                : matchMedia('(prefers-color-scheme: dark)').matches
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        })()
+    </script>
+  <script type="module" crossorigin src="/assets/main-aNL-bAu8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Bgzg0SK3.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Sayoko 的手记首页">
+            <img src="/img/favicon.svg" alt="" width="28" height="28">
+            <span>Sayoko 的手记</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+            <a href="/">首页</a>
+            <a href="/blog/">文章</a>
+            <a href="/about/">关于</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色主题">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main id="main" class="container not-found">
+    <p class="eyebrow">// 404</p>
+    <h1>这里什么也没有。</h1>
+    <p>
+        页面可能被移动、删除了，或者链接写错了。
+        你可以回首页，或者去文章列表看看。
+    </p>
+    <div class="hero-actions">
+        <a class="btn btn-primary" href="/">回首页</a>
+        <a class="btn" href="/blog/">看文章</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© <span id="year">2026</span> ninja-sayoko · 用 Vite 构建</p>
+        <nav class="footer-nav" aria-label="页脚导航">
+            <a href="/feed.xml">RSS</a>
+            <a href="/sitemap.xml">Sitemap</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>

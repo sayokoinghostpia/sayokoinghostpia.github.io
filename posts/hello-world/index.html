@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你好，世界：这个博客的第一篇文章 · Sayoko 的手记</title>
+    <meta name="description" content="关于开博缘由、这里会写什么，以及这个站点是怎么搭起来的。">
+    <link rel="canonical" href="https://sayokoinghostpia.github.io/posts/hello-world/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="你好，世界：这个博客的第一篇文章">
+    <meta property="og:description" content="关于开博缘由、这里会写什么，以及这个站点是怎么搭起来的。">
+    <meta property="og:url" content="https://sayokoinghostpia.github.io/posts/hello-world/">
+    <meta property="og:site_name" content="Sayoko 的手记">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f4ed">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111214">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" type="application/rss+xml" title="Sayoko 的手记 RSS" href="/feed.xml">
+    <script>
+        (() => {
+            let saved = null
+            try { saved = localStorage.getItem('theme') } catch {}
+            const dark = saved ? saved === 'dark'
+                : matchMedia('(prefers-color-scheme: dark)').matches
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        })()
+    </script>
+  <script type="module" crossorigin src="/assets/main-aNL-bAu8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Bgzg0SK3.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Sayoko 的手记首页">
+            <img src="/img/favicon.svg" alt="" width="28" height="28">
+            <span>Sayoko 的手记</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+            <a href="/">首页</a>
+            <a href="/blog/">文章</a>
+            <a href="/about/">关于</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色主题">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main id="main">
+    <article class="post container">
+        <header class="post-header">
+            <p class="eyebrow">
+                文章 · <time datetime="2026-11-13">2026 年 11 月 13 日</time>
+                · <span data-reading-time>约 4 分钟</span>
+            </p>
+            <h1>你好，世界：这个博客的第一篇文章</h1>
+            <p class="post-summary">关于开博缘由、这里会写什么，以及这个站点是怎么搭起来的。</p>
+            <div class="tag-list">
+                <a class="tag" href="/blog/?tag=notes">随笔</a>
+                <a class="tag" href="/blog/?tag=meta">建站</a>
+            </div>
+        </header>
+
+        <div class="post-layout">
+            <aside class="post-toc" aria-label="目录">
+                <p class="post-toc__title">目录</p>
+                <nav id="toc"></nav>
+            </aside>
+
+            <div class="post-content prose">
+                <p>
+                    这是这个博客的第一篇文章。写它的目的很简单：给之后的技术笔记和生活记录
+                    找一个不会被信息流冲走的地方。
+                </p>
+
+                <h2>为什么要有自己的站点</h2>
+                <p>
+                    社交平台很适合快速分享，但不适合长期整理。一个自己的站点可以自己决定
+                    结构、排版和去留，也可以把零散的笔记慢慢串成一条线。更重要的是，做这个
+                    站点的过程本身就是一次练习：写 HTML、调 CSS、用 JavaScript 加一点交互，
+                    再把它发布到公网。
+                </p>
+
+                <h2>这里会写什么</h2>
+                <ul>
+                    <li><strong>图形学与 C++</strong>：正在学的 Direct3D 11、渲染管线和工程习惯。</li>
+                    <li><strong>Web 与工具</strong>：构建工具、静态站点、前端基础。</li>
+                    <li><strong>随笔</strong>：项目进展、踩坑记录和一些生活碎片。</li>
+                </ul>
+                <p>
+                    文章不会追求大而全，更多是「把一件事讲清楚」的短笔记。如果某篇内容对你有用，
+                    那当然最好；如果没有，也可以把它当成我的公开草稿本。
+                </p>
+
+                <h2>这个站点怎么搭的</h2>
+                <p>
+                    站点是一个纯静态项目：页面是手写的 HTML，样式用原生 CSS，交互用原生
+                    JavaScript；构建工具是 Vite。构建时会生成一个 <code>dist/</code> 目录，
+                    里面是最终要发布的文件。然后把这些文件复制到 GitHub Pages 仓库的根目录，
+                    推送到 <code>main</code> 分支，GitHub 就会自动重新发布。
+                </p>
+                <p>
+                    因为是纯静态站点，所以没有数据库、没有后端，也没有登录和评论。
+                    换来的是简单、快、便宜，而且所有内容都在自己的仓库里。
+                </p>
+
+                <h2>下一步</h2>
+                <p>
+                    先把结构跑通，再慢慢把内容换成真正想写的东西。之后可能会加代码高亮、
+                    标签归档，或者把写作流程换成 Markdown。不过在那之前，先让这个站点上线。
+                </p>
+
+                <blockquote>
+                    <p>慢慢写，持续写。比起一次写完，更重要的是下一次还会回来。</p>
+                </blockquote>
+            </div>
+        </div>
+
+        <footer class="post-footer">
+            <nav class="post-nav" aria-label="文章导航">
+                <a href="/blog/">← 返回文章列表</a>
+                <a href="/posts/d3d11-engine-notes/">下一篇：从 hw3d 出发 →</a>
+            </nav>
+        </footer>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© <span id="year">2026</span> ninja-sayoko · 用 Vite 构建</p>
+        <nav class="footer-nav" aria-label="页脚导航">
+            <a href="/feed.xml">RSS</a>
+            <a href="/sitemap.xml">Sitemap</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>

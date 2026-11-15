@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Sayoko 的手记</title>
+        <link>https://sayokoinghostpia.github.io/</link>
+        <description>ninja-sayoko 的个人博客：C++、图形学、Web 与日常笔记。</description>
+        <language>zh-CN</language>
+        <lastBuildDate>Fri, 13 Nov 2026 12:00:00 +0800</lastBuildDate>
+
+        <item>
+            <title>你好，世界：这个博客的第一篇文章</title>
+            <link>https://sayokoinghostpia.github.io/posts/hello-world/</link>
+            <guid isPermaLink="true">https://sayokoinghostpia.github.io/posts/hello-world/</guid>
+            <pubDate>Fri, 13 Nov 2026 00:00:00 +0800</pubDate>
+            <description>关于开博缘由、这里会写什么，以及站点是怎么搭的。</description>
+        </item>
+
+        <item>
+            <title>从 hw3d 出发：Direct3D 11 渲染管线笔记</title>
+            <link>https://sayokoinghostpia.github.io/posts/d3d11-engine-notes/</link>
+            <guid isPermaLink="true">https://sayokoinghostpia.github.io/posts/d3d11-engine-notes/</guid>
+            <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
+            <description>以 hw3d 为线索，梳理 D3D11 的设备、交换链、渲染管线和常量缓冲。</description>
+        </item>
+
+        <item>
+            <title>我常用的现代 C++ 小技巧</title>
+            <link>https://sayokoinghostpia.github.io/posts/modern-cpp-notes/</link>
+            <guid isPermaLink="true">https://sayokoinghostpia.github.io/posts/modern-cpp-notes/</guid>
+            <pubDate>Tue, 27 Oct 2026 00:00:00 +0800</pubDate>
+            <description>RAII、智能指针、optional、string_view、span、constexpr 与结构化绑定的实践笔记。</description>
+        </item>
+
+        <item>
+            <title>用 Vite 和 GitHub Pages 搭一个静态博客</title>
+            <link>https://sayokoinghostpia.github.io/posts/static-blog-on-github-pages/</link>
+            <guid isPermaLink="true">https://sayokoinghostpia.github.io/posts/static-blog-on-github-pages/</guid>
+            <pubDate>Sun, 18 Oct 2026 00:00:00 +0800</pubDate>
+            <description>记录这个站点的结构、Vite 构建、.nojekyll 和发布流程。</description>
+        </item>
+    </channel>
+</rss>

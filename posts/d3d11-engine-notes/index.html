@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从 hw3d 出发：Direct3D 11 渲染管线笔记 · Sayoko 的手记</title>
+    <meta name="description" content="以 hw3d 为线索，梳理 D3D11 的设备、交换链、渲染管线和常量缓冲。">
+    <link rel="canonical" href="https://sayokoinghostpia.github.io/posts/d3d11-engine-notes/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="从 hw3d 出发：Direct3D 11 渲染管线笔记">
+    <meta property="og:description" content="以 hw3d 为线索，梳理 D3D11 的设备、交换链、渲染管线和常量缓冲。">
+    <meta property="og:url" content="https://sayokoinghostpia.github.io/posts/d3d11-engine-notes/">
+    <meta property="og:site_name" content="Sayoko 的手记">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f4ed">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111214">
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" type="application/rss+xml" title="Sayoko 的手记 RSS" href="/feed.xml">
+    <script>
+        (() => {
+            let saved = null
+            try { saved = localStorage.getItem('theme') } catch {}
+            const dark = saved ? saved === 'dark'
+                : matchMedia('(prefers-color-scheme: dark)').matches
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        })()
+    </script>
+  <script type="module" crossorigin src="/assets/main-aNL-bAu8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Bgzg0SK3.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Sayoko 的手记首页">
+            <img src="/img/favicon.svg" alt="" width="28" height="28">
+            <span>Sayoko 的手记</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+            <a href="/">首页</a>
+            <a href="/blog/">文章</a>
+            <a href="/about/">关于</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色主题">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main id="main">
+    <article class="post container">
+        <header class="post-header">
+            <p class="eyebrow">
+                文章 · <time datetime="2026-11-08">2026 年 11 月 8 日</time>
+                · <span data-reading-time>约 6 分钟</span>
+            </p>
+            <h1>从 hw3d 出发：Direct3D 11 渲染管线笔记</h1>
+            <p class="post-summary">
+                以 hw3d 为线索，梳理 D3D11 的设备、交换链、渲染管线和常量缓冲。
+            </p>
+            <div class="tag-list">
+                <a class="tag" href="/blog/?tag=graphics">图形学</a>
+                <a class="tag" href="/blog/?tag=cpp">C++</a>
+            </div>
+        </header>
+
+        <div class="post-layout">
+            <aside class="post-toc" aria-label="目录">
+                <p class="post-toc__title">目录</p>
+                <nav id="toc"></nav>
+            </aside>
+
+            <div class="post-content prose">
+                <p>
+                    最近在跟着 Planet Chili 的教程写
+                    <a href="https://github.com/sayokoinghostpia/hw3d" target="_blank" rel="noopener noreferrer">hw3d</a>，
+                    一个用 Direct3D 11 实现的 3D 小引擎。这里不打算写成完整的 D3D11 教程，
+                    只想把目前理解的几个核心对象和管线阶段串起来，方便以后回头查。
+                </p>
+
+                <h2>设备、上下文与交换链</h2>
+                <p>
+                    D3D11 里最先遇到的是三个对象：
+                    <code>ID3D11Device</code> 负责创建资源，
+                    <code>ID3D11DeviceContext</code> 负责发出绘制命令，
+                    <code>IDXGISwapChain</code> 负责把渲染结果呈现到窗口。
+                    创建它们最省事的方式是调用
+                    <code>D3D11CreateDeviceAndSwapChain</code>，一次性把描述填好：
+                </p>
+
+                <pre><code class="language-cpp">DXGI_SWAP_CHAIN_DESC sd = {};
+sd.BufferCount = 2;
+sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+sd.OutputWindow = hWnd;
+sd.SampleDesc.Count = 1;
+sd.Windowed = TRUE;
+
+D3D11CreateDeviceAndSwapChain(
+    nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0,
+    nullptr, 0, D3D11_SDK_VERSION,
+    &amp;sd, &amp;swapChain, &amp;device, nullptr, &amp;context);</code></pre>
+
+                <p>
+                    交换链通常维护两个后台缓冲：一个正在显示，另一个在后台绘制。
+                    调用 <code>Present</code> 时交换，画面看起来就连续了。
+                    <code>BufferDesc.Format</code> 和窗口的像素格式要对齐，
+                    否则容易得到一片黑屏或者颜色发灰。
+                </p>
+
+                <h2>渲染管线的几个阶段</h2>
+                <p>
+                    把一帧画出来，大致会经过这些阶段：
+                </p>
+                <ul>
+                    <li><strong>输入装配（IA）</strong>：从顶点缓冲和索引缓冲读取几何数据。</li>
+                    <li><strong>顶点着色器（VS）</strong>：把顶点从模型空间变换到裁剪空间。</li>
+                    <li><strong>光栅化（RS）</strong>：把三角形变成屏幕上的像素片段。</li>
+                    <li><strong>像素着色器（PS）</strong>：决定每个像素最终的颜色。</li>
+                    <li><strong>输出合并（OM）</strong>：处理深度、模板和混合，写入渲染目标。</li>
+                </ul>
+                <p>
+                    这些阶段在 D3D11 里不是手写循环，而是通过设置管线状态、绑定资源和调用
+                    <code>Draw</code> 来驱动。理解每个阶段「输入什么、输出什么」，
+                    比记住 API 名称更有用。
+                </p>
+
+                <h2>着色器与常量缓冲</h2>
+                <p>
+                    顶点变换需要矩阵。实践中通常把 world、view、projection 放进一个
+                    <code>cbuffer</code>（常量缓冲），由 CPU 每帧更新，再绑定到管线上。
+                    一个最小的顶点着色器大概是这样：
+                </p>
+
+                <pre><code class="language-hlsl">cbuffer Transform : register(b0)
+{
+    matrix world;
+    matrix view;
+    matrix projection;
+};
+
+struct VSInput
+{
+    float3 position : POSITION;
+    float3 color    : COLOR;
+};
+
+float4 VSMain(VSInput input) : SV_POSITION
+{
+    float4 clip = mul(float4(input.position, 1.0f), world);
+    clip = mul(clip, view);
+    clip = mul(clip, projection);
+    return clip;
+}</code></pre>
+
+                <p>
+                    常量缓冲的结构要和 C++ 侧的结构体对齐，注意打包规则和 16 字节边界。
+                    如果画面莫名其妙地扭曲，先检查矩阵是不是按行主序/列主序传错了，
+                    再检查常量缓冲有没有成功绑定。
+                </p>
+
+                <h2>从教程到自己的东西</h2>
+                <p>
+                    跟着教程敲代码很容易产生「我懂了」的错觉。真正开始改的时候，
+                    问题才会暴露：窗口大小变化时交换链要不要重建？渲染目标什么时候释放？
+                    哪些资源应该由 RAII 管理？这些问题没有唯一答案，但每一次修好都会让
+                    引擎更接近「自己的」。
+                </p>
+                <p>
+                    下一步想加的是简单的光照和纹理，然后把渲染流程整理成更清晰的模块。
+                    如果顺利，会把过程中的坑继续写在这里。
+                </p>
+            </div>
+        </div>
+
+        <footer class="post-footer">
+            <nav class="post-nav" aria-label="文章导航">
+                <a href="/posts/hello-world/">← 上一篇：你好，世界</a>
+                <a href="/posts/modern-cpp-notes/">下一篇：现代 C++ 小技巧 →</a>
+            </nav>
+        </footer>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© <span id="year">2026</span> ninja-sayoko · 用 Vite 构建</p>
+        <nav class="footer-nav" aria-label="页脚导航">
+            <a href="/feed.xml">RSS</a>
+            <a href="/sitemap.xml">Sitemap</a>
+            <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>
