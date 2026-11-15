@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于 · Sayoko 的手记</title>
-    <meta name="description" content="关于 ninja-sayoko：正在学 C++、图形学与 Web，记录项目与日常。">
-    <link rel="canonical" href="https://sayokoinghostpia.github.io/about/">
+    <title>Sayoko Blog</title>
+    <meta name="description" content="ninja-sayoko">
+    <link rel="canonical" href="https://sayokoinghostpia.github.io/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="关于 · Sayoko 的手记">
-    <meta property="og:description" content="关于 ninja-sayoko：正在学 C++、图形学与 Web，记录项目与日常。">
-    <meta property="og:url" content="https://sayokoinghostpia.github.io/about/">
-    <meta property="og:site_name" content="Sayoko 的手记">
+    <meta property="og:title" content="幽灵镇">
+    <meta property="og:description" content="ninja-sayoko 的个人博客">
+    <meta property="og:url" content="https://sayokoinghostpia.github.io/">
+    <meta property="og:site_name" content="幽灵镇">
     <meta property="og:locale" content="zh_CN">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f4ed">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111214">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <link rel="alternate" type="application/rss+xml" title="Sayoko 的手记 RSS" href="/feed.xml">
     <script>
         (() => {
             let saved = null
@@ -25,18 +24,18 @@
                 : matchMedia('(prefers-color-scheme: dark)').matches
             document.documentElement.dataset.theme = dark ? 'dark' : 'light'
         })()
-    </script>
-  <script type="module" crossorigin src="/assets/main-aNL-bAu8.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-Bgzg0SK3.css">
+    </script>
+    <!-- 控制主题色 -->
+  <script type="module" crossorigin src="/assets/main-D7MAgG4d.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BLH9i3AC.css">
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
 
 <header class="site-header">
     <div class="container header-inner">
-        <a class="brand" href="/" aria-label="Sayoko 的手记首页">
-            <img src="/img/favicon.svg" alt="" width="28" height="28">
-            <span>Sayoko 的手记</span>
+        <a class="brand" href="/" aria-label="Sayoko Blog">
+            <span>幽灵镇</span>
         </a>
         <nav class="site-nav" aria-label="主导航">
             <a href="/">首页</a>
@@ -44,7 +43,7 @@
             <a href="/about/">关于</a>
             <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色主题">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换主题">
             <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="12" r="4"></circle>
                 <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
@@ -60,8 +59,8 @@
     <section class="page-head">
         <div class="container">
             <p class="eyebrow">// ABOUT</p>
-            <h1>关于我</h1>
-            <p class="page-lede">一个正在学习图形学与前端的人，喜欢把学到的东西写下来。</p>
+            <h1>关于</h1>
+            <p class="page-lede">记录研究兴趣</p>
         </div>
     </section>
 
@@ -73,40 +72,27 @@
                 <!--/div-->
                 <div class="prose">
                     <p>
-                        我是 <strong>ninja-sayoko</strong>，GitHub 上的
+                        <strong>sayoko</strong>
                         <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">sayokoinghostpia</a>。
-                        目前主要在学 C++ 和 Direct3D 11，跟着 Planet Chili 的教程写
-                        <a href="https://github.com/sayokoinghostpia/hw3d" target="_blank" rel="noopener noreferrer">hw3d</a>；
-                        同时也在补 Web 前端的基础。
+                        本科二年在读
                     </p>
                     <p>
-                        这个博客既是练习，也是记录。练习怎么把一个页面从零搭起来、
-                        怎么发布到公网；记录在学习过程中真正卡住过的地方，以及后来是怎么想明白的。
+                        记录与保存感想。
                     </p>
                     <p>
-                        如果这里的内容刚好帮到你，欢迎从
-                        <a href="/blog/">文章列表</a> 开始逛，或者通过
-                        <a href="/feed.xml">RSS</a> 订阅更新。
+                        欢迎阅读
+                        <a href="/blog/">文章列表</a>
                     </p>
                 </div>
             </div>
 
             <div class="about-grid">
                 <section>
-                    <h2>正在做</h2>
+                    <h2>方向</h2>
                     <ul>
-                        <li>用 Direct3D 11 实现一个小的 3D 引擎</li>
-                        <li>维护这个静态博客</li>
-                        <li>补 C++ 与 Web 前端基础</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>工具箱</h2>
-                    <ul>
-                        <li>C++ / Direct3D 11 / HLSL</li>
-                        <li>JavaScript / Node.js</li>
-                        <li>Git / Vite</li>
+                        <li>C++ / Direct3D</li>
+                        <li>Vue</li>
+                        <li>游戏设计</li>
                     </ul>
                 </section>
 
@@ -114,8 +100,6 @@
                     <h2>联系</h2>
                     <ul>
                         <li><a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                        <li><a href="/feed.xml">RSS 订阅</a></li>
-                        <li>不公开邮箱，优先通过 GitHub 联系</li>
                     </ul>
                 </section>
             </div>
@@ -125,10 +109,8 @@
 
 <footer class="site-footer">
     <div class="container footer-inner">
-        <p>© <span id="year">2026</span> ninja-sayoko · 用 Vite 构建</p>
+        <p>© <span id="year">2026</span> ninja-sayoko</p>
         <nav class="footer-nav" aria-label="页脚导航">
-            <a href="/feed.xml">RSS</a>
-            <a href="/sitemap.xml">Sitemap</a>
             <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
     </div>

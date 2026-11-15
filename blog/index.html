@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文章 · Sayoko 的手记</title>
-    <meta name="description" content="Sayoko 的手记全部文章：C++、图形学、Web 与日常笔记。">
-    <link rel="canonical" href="https://sayokoinghostpia.github.io/blog/">
+    <title>Sayoko Blog</title>
+    <meta name="description" content="ninja-sayoko">
+    <link rel="canonical" href="https://sayokoinghostpia.github.io/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="文章 · Sayoko 的手记">
-    <meta property="og:description" content="Sayoko 的手记全部文章：C++、图形学、Web 与日常笔记。">
-    <meta property="og:url" content="https://sayokoinghostpia.github.io/blog/">
-    <meta property="og:site_name" content="Sayoko 的手记">
+    <meta property="og:title" content="幽灵镇">
+    <meta property="og:description" content="ninja-sayoko 的个人博客">
+    <meta property="og:url" content="https://sayokoinghostpia.github.io/">
+    <meta property="og:site_name" content="幽灵镇">
     <meta property="og:locale" content="zh_CN">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f4ed">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111214">
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-    <link rel="alternate" type="application/rss+xml" title="Sayoko 的手记 RSS" href="/feed.xml">
     <script>
         (() => {
             let saved = null
@@ -25,18 +24,18 @@
                 : matchMedia('(prefers-color-scheme: dark)').matches
             document.documentElement.dataset.theme = dark ? 'dark' : 'light'
         })()
-    </script>
-  <script type="module" crossorigin src="/assets/main-aNL-bAu8.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-Bgzg0SK3.css">
+    </script>
+    <!-- 控制主题色 -->
+  <script type="module" crossorigin src="/assets/main-D7MAgG4d.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BLH9i3AC.css">
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
 
 <header class="site-header">
     <div class="container header-inner">
-        <a class="brand" href="/" aria-label="Sayoko 的手记首页">
-            <img src="/img/favicon.svg" alt="" width="28" height="28">
-            <span>Sayoko 的手记</span>
+        <a class="brand" href="/" aria-label="Sayoko Blog">
+            <span>幽灵镇</span>
         </a>
         <nav class="site-nav" aria-label="主导航">
             <a href="/">首页</a>
@@ -44,7 +43,7 @@
             <a href="/about/">关于</a>
             <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色主题">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换主题">
             <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="12" r="4"></circle>
                 <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
@@ -61,7 +60,6 @@
         <div class="container">
             <p class="eyebrow">// ARCHIVE</p>
             <h1>全部文章</h1>
-            <p class="page-lede">按时间倒序排列。用搜索或标签快速找到想看的内容。</p>
         </div>
     </section>
 
@@ -74,14 +72,12 @@
                         <path d="M16 16l5 5"></path>
                     </svg>
                     <label class="sr-only" for="post-search">搜索文章</label>
-                    <input id="post-search" type="search" placeholder="搜索标题、摘要或标签…" autocomplete="off">
+                    <input id="post-search" type="search" placeholder="" autocomplete="off">
                 </div>
 
                 <div class="filter-bar" role="group" aria-label="按标签筛选">
                     <button class="filter is-active" data-filter="all" type="button">全部</button>
-                    <button class="filter" data-filter="notes" type="button">随笔</button>
-                    <button class="filter" data-filter="meta" type="button">建站</button>
-                    <button class="filter" data-filter="graphics" type="button">图形学</button>
+                    <button class="filter" data-filter="notes" type="button">笔记</button>
                     <button class="filter" data-filter="cpp" type="button">C++</button>
                     <button class="filter" data-filter="web" type="button">Web</button>
                 </div>
@@ -90,7 +86,7 @@
             </div>
 
             <noscript>
-                <p class="blog-count">搜索和标签筛选需要启用 JavaScript；全部文章如下。</p>
+                <p class="blog-count">搜索需启用JS</p>
             </noscript>
 
             <p class="empty-state" id="blog-empty" hidden>
@@ -101,72 +97,30 @@
                 <h2 class="year-title">2026</h2>
 
                 <div class="post-grid">
-                    <article class="post-card" data-title="你好，世界：这个博客的第一篇文章" data-tags="notes meta">
+                    <article class="post-card" data-title="第一篇文章" data-tags="notes meta">
                         <p class="post-card__meta">
-                            <time datetime="2026-11-13">2026 年 11 月 13 日</time> · 随笔 / 建站
+                            <time datetime="2026-11-13">2026 年 11 月 13 日</time>
                         </p>
-                        <h3><a href="/posts/hello-world/">你好，世界：这个博客的第一篇文章</a></h3>
-                        <p>关于开博缘由、这里会写什么，以及站点是怎么搭的。</p>
+                        <h3><a href="/posts/hello-world/">第一篇文章</a></h3>
+                        <p>第一篇文章</p>
                         <div class="tag-list">
-                            <a class="tag" href="/blog/?tag=notes">随笔</a>
-                            <a class="tag" href="/blog/?tag=meta">建站</a>
+                            <a class="tag" href="/blog/?tag=notes">笔记</a>
                         </div>
-                        <a class="post-card__more" href="/posts/hello-world/">继续阅读 →</a>
+                        <a class="post-card__more" href="/posts/hello-world/">阅读 →</a>
                     </article>
 
-                    <article class="post-card" data-title="从 hw3d 出发：Direct3D 11 渲染管线笔记" data-tags="graphics cpp">
-                        <p class="post-card__meta">
-                            <time datetime="2026-11-08">2026 年 11 月 8 日</time> · 图形学 / C++
-                        </p>
-                        <h3><a href="/posts/d3d11-engine-notes/">从 hw3d 出发：Direct3D 11 渲染管线笔记</a></h3>
-                        <p>以 hw3d 为线索，梳理 D3D11 的设备、交换链、渲染管线和常量缓冲。</p>
-                        <div class="tag-list">
-                            <a class="tag" href="/blog/?tag=graphics">图形学</a>
-                            <a class="tag" href="/blog/?tag=cpp">C++</a>
-                        </div>
-                        <a class="post-card__more" href="/posts/d3d11-engine-notes/">继续阅读 →</a>
-                    </article>
-
-                    <article class="post-card" data-title="我常用的现代 C++ 小技巧" data-tags="cpp">
-                        <p class="post-card__meta">
-                            <time datetime="2026-10-27">2026 年 10 月 27 日</time> · C++
-                        </p>
-                        <h3><a href="/posts/modern-cpp-notes/">我常用的现代 C++ 小技巧</a></h3>
-                        <p>RAII、智能指针、optional、string_view、span 与 constexpr 的实践笔记。</p>
-                        <div class="tag-list">
-                            <a class="tag" href="/blog/?tag=cpp">C++</a>
-                        </div>
-                        <a class="post-card__more" href="/posts/modern-cpp-notes/">继续阅读 →</a>
-                    </article>
-
-                    <article class="post-card" data-title="用 Vite 和 GitHub Pages 搭一个静态博客" data-tags="web meta">
-                        <p class="post-card__meta">
-                            <time datetime="2026-10-18">2026 年 10 月 18 日</time> · Web / 建站
-                        </p>
-                        <h3><a href="/posts/static-blog-on-github-pages/">用 Vite 和 GitHub Pages 搭一个静态博客</a></h3>
-                        <p>记录这个站点的结构、Vite 构建、.nojekyll 和发布流程。</p>
-                        <div class="tag-list">
-                            <a class="tag" href="/blog/?tag=web">Web</a>
-                            <a class="tag" href="/blog/?tag=meta">建站</a>
-                        </div>
-                        <a class="post-card__more" href="/posts/static-blog-on-github-pages/">继续阅读 →</a>
-                    </article>
                 </div>
             </section>
         </div>
     </section>
 </main>
-
 <footer class="site-footer">
     <div class="container footer-inner">
-        <p>© <span id="year">2026</span> ninja-sayoko · 用 Vite 构建</p>
+        <p>© <span id="year">2026</span> ninja-sayoko</p>
         <nav class="footer-nav" aria-label="页脚导航">
-            <a href="/feed.xml">RSS</a>
-            <a href="/sitemap.xml">Sitemap</a>
             <a href="https://github.com/sayokoinghostpia" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
     </div>
-</footer>
-
+</footer>
 </body>
 </html>
